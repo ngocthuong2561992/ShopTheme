@@ -36,12 +36,30 @@ import Pagination from "Components/List/Pagination";
 import mouseTrap from "react-mousetrap";
 
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import FineUploaderTraditional from "fine-uploader-wrappers";
+import Gallery from "react-fine-uploader";
+import "react-fine-uploader/gallery/gallery.css";
 function collect(props) {
   return { data: props.data };
 }
 const apiUrl ="http://localhost:3000/shop/getAllProduct";
 const apiAddProductUrl ="http://localhost:3000/shop/product/add";
 import axios from 'axios';
+
+const uploader = new FineUploaderTraditional({
+  options: {
+    chunking: {
+      enabled: false
+    },
+    deleteFile: {
+      enabled: true,
+      endpoint: "/uploads"
+    },
+    request: {
+      endpoint: "/uploads"
+    }
+  }
+});
 
 class ImageListLayout extends Component {
     constructor(props) {
@@ -82,7 +100,10 @@ class ImageListLayout extends Component {
         isLoading:false,
         id : 0,
 		    txtProductName : '',
-		    txtCategories : 'Cakes',
+        txtCategories : 'Cakes',
+        txtSales : '' ,
+        txtStock : '' ,
+        txtImage : '',
 		    txtDescription : '' ,
         exCustomRadio : '',
       };
@@ -115,10 +136,13 @@ class ImageListLayout extends Component {
     }
 
     onSubmit() {
-      var{id,txtProductName,txtCategories,txtDescription,exCustomRadio,exCustomRadio2}=this.state;
+      var{id,txtProductName,txtCategories,txtImage,txtSales,txtStock,txtDescription,exCustomRadio,exCustomRadio2}=this.state;
       var data = {
         id: id,
         name: txtProductName,
+        sales: txtSales,
+        stock: txtStock,
+        img : txtImage,
         category: txtCategories,
         description: txtDescription,
         status: exCustomRadio,
@@ -297,7 +321,7 @@ class ImageListLayout extends Component {
       const startIndex= (this.state.currentPage-1)*this.state.selectedPageSize
       const endIndex= (this.state.currentPage)*this.state.selectedPageSize
       const {messages} = this.props.intl;
-      var  {txtProductName,txtCategories,txtDescription,exCustomRadio,exCustomRadio2}=this.state;
+      var  {txtProductName,txtCategories,txtImage,txtSales,txtStock,txtDescription,exCustomRadio,exCustomRadio2}=this.state;
       return (
         !this.state.isLoading?
           <div className="loading"></div>
@@ -349,7 +373,28 @@ class ImageListLayout extends Component {
                           onChange={this.onChange}
                         />
                         <Label className="mt-4">
-                          <IntlMessages id="layouts.description" />
+                          <IntlMessages id="form-components.fine-uploader" />
+                        </Label>
+                        <Gallery
+                         animationsDisabled={true}
+                         uploader={uploader}
+                         deleteButton-children={<span>Delete</span>}
+                         fileInput-children={<span />}
+                        >
+                       <span className="react-fine-uploader-gallery-dropzone-content">
+                       <IntlMessages id="form-components.drop-files-here" />
+                       </span>
+                       </Gallery>
+                       <Label>
+                          <IntlMessages id="layouts.amount" />
+                        </Label>
+                        <Input type="text"  value={txtStock}  name="txtStock" onChange={this.onChange}/>
+                        <Label>
+                          <IntlMessages id="layouts.price" />
+                        </Label>
+                        <Input type="text"  value={txtSales}  name="txtSales" onChange={this.onChange}/>
+                        <Label className="mt-4">
+                        <IntlMessages id="layouts.description" />
                         </Label>
                         <Input type="textarea"  value={txtDescription}  name="txtDescription" onChange={this.onChange}/>
                         <Label className="mt-4">
