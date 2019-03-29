@@ -1,0 +1,360 @@
+@charset "utf-8";
+html, body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sup, sub, tt, var, b, u, i, center, ul, ol, li, dl, dt, dd, tfoot, caption, form, fieldset, legend, input, button, textarea, select, label, applet, object, iframe, audio, video, canvas, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary{ margin:0; padding:0;vertical-align: baseline; border: 0; outline: 0}
+a{ text-decoration:none; color: #06f} a:hover{ color:#5e5e5e}
+.clr{ clear:both} .clr5{ clear:both; height:5px} .clr10{ clear:both; height:10px} .clr20{ clear:both; height:20px} .m10{ margin:10px 0} p{ margin:0; padding:0} li,ul,nav{ list-style:none} .pad10{ padding:10px} .mt10{ margin-top:10px}
+.resolution{ height:10px; background:#fff}
+.introhome{ padding:10px 20px; text-align:left; border:1px solid #ccc; border-bottom:3px solid #5e5e5e}
+.introhome ul{ margin-left:10px !important;}
+.introhome ul li{ background:url(../images/li-cap1.png) left top no-repeat; padding-left:20px !important; list-style:none !important;}
+a.edit{ padding:5px 10px; border:1px solid #ccc; border-radius:5px 5px 0 0; margin-top:10px; display:block} a.edit img{ border:0; margin-right:5px; margin-bottom:-2px}
+input.w50{ width:50px !important; margin-right:5px}
+.blue{ color:#06f} .red{ color:#f00}
+p.listitemcart{ margin-bottom:5px}
+p.listitemcart strong{margin-right:20px; font-weight:normal; width:200px !important; display:block; float:left} p.listitemcart span{ margin-right:20px}
+
+/* mobile icon */
+.logomb{position: relative; display: none;}
+.mobileico{position: fixed; bottom: 10px; left:0px; z-index: 99999;}
+.mobileico li{margin-left: 10px; color: #fff; padding: 5px; text-align: center; width: 110px; display: block; float: left;
+border-radius: 4px}
+.mobileico li img{display: inline-block;} .mobileico a{color: #fff}
+
+.boxhot{ display:block}
+.boxhot .cleft{ width:100%; float:left} .boxhot .cright{ width:30%; float:right}
+
+ul.texttop{ clear:both} ul.texttop li{ width:42%; border:1px solid #222; padding:20px 3%; text-align:center; background:#333;} ul.texttop li img{ border:0; margin-bottom:-8px; margin-right:10px}
+ul.texttop a{ color:#ccc}
+ul.texttop li:first-child{ float:left} ul.texttop li:last-child{ float:right}
+
+ul.textbottom{ clear:both; padding:0; margin-top:0} ul.textbottom li{ width:32.33%; margin:1% 0 1% 1%; text-align:center; float:left} ul.textbottom li img{ border:0; margin-bottom:10px}
+ul.textbottom li:first-child{ margin-left:0}
+ul.textbottom p{ color:#393c41}
+
+/* BXSlider */
+.bx-wrapper img{width:100%}
+.bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto {position: absolute; bottom: 10px; width: 100%; display:none}
+.bx-wrapper .bx-loading{min-height: 50px; background: url(../images/ajax-loader.gif) center center no-repeat #fff; width: 100%; position: absolute; top: 0; left: 0; z-index: 100}
+.bx-wrapper .bx-pager {text-align: center; font-size: .85em; font-family: Arial; font-weight: bold; color: #666; padding-top: 20px}
+.bx-wrapper .bx-pager .bx-pager-item, .bx-wrapper .bx-controls-auto .bx-controls-auto-item {display: inline-block; *zoom: 1; *display: inline}
+a.bx-pager-link { width:30px; height:30px; background:#ccc} a.bx-paper-link:active { background:#f00}
+.bx-wrapper .bx-pager.bx-default-pager a { background: #666; text-indent: -9999px; display: block; width: 10px; height: 10px; margin: 0 5px; outline: 0; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px}
+.bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active {background: #000}
+.bx-wrapper .bx-prev {left: 0px; background: url(../images/nav-hover.png) no-repeat 0 }
+.bx-wrapper .bx-next {right: 0px; background: url(../images/nav-hover.png) no-repeat -34px}
+.bx-wrapper .bx-controls-direction a {position: absolute; top: 50%; margin-top: -16px; outline: 0; width: 32px; height: 32px; text-indent: -9999px; z-index: 100}
+.bx-wrapper .bx-controls-direction a.disabled {display: none}
+.bx-wrapper .bx-controls-auto {text-align: center}
+.bx-wrapper .bx-controls-auto .bx-start {display: block; text-indent: -9999px; width: 10px; height: 11px; outline: 0; background: url(../images/controls.png) -86px -11px no-repeat; margin: 0 3px}
+.bx-wrapper .bx-controls-auto .bx-start:hover, .bx-wrapper .bx-controls-auto .bx-start.active {background-position: -86px 0}
+.bx-wrapper .bx-controls-auto .bx-stop {display: block; text-indent: -9999px; width: 9px; height: 11px; outline: 0; background: url(../images/controls.png) -86px -44px no-repeat; margin: 0 3px}
+.bx-wrapper .bx-controls-auto .bx-stop:hover, .bx-wrapper .bx-controls-auto .bx-stop.active {background-position: -86px -33px}
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager { text-align: left; width: 80%}
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto { right: 0; width: 35px}
+.bx-wrapper .bx-caption {position: absolute;bottom: 0;left: 0;background: #666\9;background: rgba(80, 80, 80, 0.75);width: 100%}
+.bx-wrapper .bx-caption span {color: #fff; font-family: Arial; display: block; font-size: .85em; padding: 10px}
+/* End BXslider */
+/* Marquee */
+.marquee-sibling { padding: 0; background:#343434; width: 82px; border-left:2px solid #363636; height: 30px; line-height: 30px; color: #ffffff; text-align: center; float: left; left: 0; z-index: 20; text-transform:uppercase}
+.marquee, *[class^="marquee"] { display: inline-block; white-space: nowrap; position:absolute}
+.marquee-content-items{  display: inline-block; padding: 0;  margin: 0; height: 30px; position: relative}
+.marquee-content-items li{ display: inline-block; line-height: 30px; color: #666} .marquee-content-items li a{ color:#777} .marquee-content-items li a:hover{ color:#343434}
+.marquee-content-items li:after{ content: "|"; margin: 0 1em}
+/* End Marquee */
+ul.textadv li div{ margin:5px; border:1px solid #ccc; height:20px; padding:20px 0}
+ul.textadv li div a{ color:#666}
+ul.textadv li div a strong{ color:#f1c40f} ul.textadv li:hover div a strong{ color:#333}
+
+.title_cat{ background:#5e5e5e; text-transform:uppercase; color:#fff; font-weight:bold; padding:10px; margin-bottom:10px} .title_cat a{ color:#fff} .title_cat img.threeline{ margin-bottom:-7px; border:0; margin-right:10px}
+.title_cat h2{line-height:1px; font-size:13px}
+.menucap1{ margin:6px 0; background:url(../images/arrowbullet.png) left no-repeat; padding-left:20px; font-weight:bold} .menucap1 a{ color:#363636; text-transform:capitalize} .menucap1 a:hover{ color:#5e5e5e}
+.menucap2{ margin:3px 0 3px 5px; padding-left:15px; } .menucap2 a{ color:#888}
+p.support{ padding-left:5px; font-weight:bold; text-align:left} p.support img{ border:0; margin-bottom:-3px} p.support span{ color:#f00; font-weight:bold}
+.tieude{ white-space:nowrap; height:42px; border-bottom:2px solid #f1c40f} .tieude .theh2{ color:#fff}
+.tieude img{ border:0; margin-bottom:-6px; margin-right:5px}
+.tieude h2.theh2{ margin:0; color:#fff; padding:10px 15px; font-size:13px; font-weight:normal;background:#f1c40f; float:left; min-width:150px; margin-bottom:-1px} .tieude .theh2 a{ color:#fff}
+.tieude .xemthem{ margin:0; color:#fff; padding:10px 15px 15px 5px; text-align:right; font-size:13px; font-weight:normal; float:right; min-width:150px; margin-bottom:-1px} .tieude .xemthem a{ color:#363636}
+form.search{ } form.search input{ padding:12px 20px; border:1px solid #eee; border-radius:3px 0 0 3px; border-right:0; color: #999; width:80%} 
+form.search button{ width:44px; height:44px; background: #343434 url(../images/search74.png) center no-repeat; text-indent:-9999px; cursor:pointer; margin:-3px 0 0 -5px} 
+form.search button:hover{ background: #363636 url(../images/search74.png) center no-repeat}
+
+.header .diachi strong{ font-size:16px; color:#363636; font-family:"Times New Roman", Times, serif}
+.header .diachi p{ font-size:13px; color:#f1c40f; font-style:italic; font-family:"Times New Roman", Times, serif}
+
+input.radThuoctinh{ margin-right:3px}
+span.radThuoctinh{ margin-right:10px; color:#06f}
+
+.upqty{ border:1px solid #ccc; padding:2px 5px; border-radius:3px; font-size:16px}
+.downqty{ border:1px solid #ccc; padding:2px 5px; border-radius:3px; font-size:16px}
+
+#logothuonghieu img{ width:166px; height:100px}
+a.linkcart{ position: absolute; bottom:15px; right:10px; padding:8px 10px 8px 40px; border:1px solid #ccc; border-radius:3px; background:#3498db url(../images/cart-icon.png) left center no-repeat; color:#fff; cursor:pointer; z-index:9999}
+.boxsphome .frame .hinh{ width:100%; height:300px; position:relative; text-align:center}
+.boxsphome .frame .hinh .comment{ position:absolute; bottom:0px; left:1px; background:#fff; color:#111; opacity:0.8; padding-right:5px;border-radius:0 5px 0 0}
+.boxsphome .frame .hinh .comment img{ width:15px !important; display:inline; margin-bottom:-1px; border:0}
+.boxsphome .frame .hinh img{ max-width:100% !important; max-height:280px !important; margin:10px 0}
+.boxsphome .frame h3{ text-align:center; font-size:12px; height:35px; font-weight:bold}
+.boxsphome .frame h3 a{ color:#007dba} .boxsphome .frame h3 a:hover{ color: #f30}
+.boxsphome .frame p{text-align:center; background:#eee}
+.boxsphome .frame .iconimg{ position:absolute; right:5px; top:10px; z-index:111}
+.boxsphome .frame .icontext{ position:absolute; left:5px; top:10px; padding:2px 5px; background:#f30; color:#fff; border-radius:0 0 10px 0; opacity:0.9; z-index:111}
+
+.boxsp .frame .hinh{ width:100%; height:190px; position:relative; text-align:center}
+.boxsp .frame .hinh .comment{ position:absolute; bottom:0px; left:1px; background:#fff; color:#111; opacity:0.8; padding-right:5px;border-radius:0 5px 0 0}
+.boxsp .frame .hinh .comment img{ width:15px !important; display:inline; margin-bottom:-1px; border:0}
+.boxsp .frame .hinh img{ max-width:100% !important; max-height:170px !important; margin:10px 0}
+.boxsp .frame h3{ text-align:center; font-size:12px; height:45px; font-weight:bold; margin-top:0}
+.boxsp .frame h3 a{ color:#363636} .boxsp .frame h3 a:hover{ color: #5e5e5e}
+.boxsp .frame p.price{text-align:center; height:20px; padding:5px 0; margin-bottom:0; background:#f9f9f9} .boxsp .frame p{text-align:center; height:30px} .boxsp .frame p a{ padding:6px 15px; color:#333} .boxsp .frame p a:hover{ background:#f1c40f; color:#fff}
+.boxsp .frame .iconimg{ position:absolute; right:5px; top:10px; z-index:111}
+.boxsp .frame .icontext{ position:absolute; left:5px; top:10px; padding:2px 5px; background:#f30; color:#fff; border-radius:0 0 10px 0; opacity:0.9; z-index:111}
+
+h4.more{ width:47%; float:left; background:url(../images/li-cap.png) left top no-repeat; text-align:left; padding-left:20px; font-weight:normal; margin:0; padding-top:5px}
+.boxtin{ width:50%; float:left} .boxtin .frame{ margin:5px; height:120px; padding:10px} .boxtin .frame .hinh{ height:75px; width:100px; float:left; text-align:center; margin-right:10px} .boxtin .frame .hinh img{ border:0; width:100%; height:100%; margin-top:5px} .boxtin .frame h3{ text-align:left; font-size:12px; margin-bottom:0; line-height:20px; height:37px; text-transform:capitalize} .boxtin .frame .des{ text-align:left}
+.listkey ul li{ float:left; padding:2px 5px; border:1px solid #ccc; border-radius:3px; margin-right:3px; margin-bottom:3px; cursor:pointer} .listkey ul li:hover{ border:1px solid #f1c40f}
+.linenews{ clear:both; height:70px; border-bottom:1px dashed #ccc; padding-bottom:5px; margin-bottom:5px} .linenews a{text-transform:capitalize}
+.linenews img{ width:80px; height:60px; float:left; margin-right:5px; margin-top:4px; border:1px solid #ccc}
+.header .name strong{ font-size:18px; margin-bottom:10px; color:#0033FF}
+.rightcol img{ max-width:100%; border:0}
+.rfooter{  background:url(../images/bg.jpg); border-top:10px solid #222; min-height:110px; color:#333}
+.rfooter .top{ height:0px; background:#fff}
+.rfooter a{ color:#333} .rfooter a:hover{ color:#f30}
+.rfooter .info{ float:left; width:38%; padding-right:2%; margin-right:2%; border-right:1px dashed #666; white-space:normal; color:#666; padding-top:20px; line-height:24px}
+.rfooter .social{ float:right; width:55%; text-align:left; text-align:right}
+.rfooter .social img{ max-width:100%; margin-left:5px}
+.rfooter .slogan{ background:#393c41; opacity:0.95; color:#fff; padding:10px 5px; text-align:justify; border-bottom:3px solid #5e5e5e}
+.copyright{ color:#393c41; margin-left:5px} .copyright a{ color:#393c41} .copyright a:hover{ color:#5e5e5e}
+ul.menubottom li{list-style:none; float:left; margin:5px; padding:5px 10px; background:#393c41}
+ul.menubottom li a{ color:#ccc} ul.menubottom li a:hover{ color:#f1c40f}
+iframe.video{ width:100%; height:160px}
+.menunew{ padding:5px 10px; background:#fff; color:#f00; margin-right:2px} .menusale{ padding:5px 10px; background:#fff; color:#06f; margin-right:2px} .menutip{ padding:5px 10px; background:#fff; color:#090; margin-right:2px} 
+.menucart{ padding:10px 2px 10px 10px; background:#fff; color:#ccc} .menucart img{ border:0; margin-bottom:-4px; margin-right:3px} .menucart span{ display:block; float:right; padding:8px 0; background:#343434; color:#fff; width:36px; text-align:center; margin-top:-8px} .menucart a{ color:#343434}
+.adv_l{ width:48%; float:left} .adv_l img{ width:100%; border:0} .adv_r{ width:48%; float:right} .adv_r img{ width:100%; border:0}
+/* Menutop */
+.nav-list { text-align:left}
+.nav-item { float:left; *display:inline; position:relative; border-right:1px dashed #000}
+.nav-item:last-child{border-right:0px}
+.nav-item a {display:block; color:#333; padding:10px 25px; text-transform:uppercase} .nav-item a:hover{background:#343434; color:#fff}
+.nav-item a.home{ background:#343434; color:#fff}
+.cap1:hover a.active{ background:#343434 url(../images/bg-topsub.png) bottom left no-repeat; color:#fff}
+.cap1:hover a.none{ }
+.nav-item:hover .nav-submenu { display:block }
+.nav-submenu { display:none; position:absolute; border:0; z-index:5555; background:#fff !important; border-bottom:4px solid #343434; text-align:left; padding:5px 5px}
+@-moz-document url-prefix() { 
+.nav-submenu-item a { padding-left:32px !important}
+.last{ left:-110px !important}	
+.nav-submenu-item span{ float:right; margin-top:-20px !important}
+}
+.last{ left:-120px}
+.nav-submenu-item a { text-transform:none; color:#666; display:block; padding:5px 10px 5px 10px; margin:0 5px; width:222px; text-shadow:none; z-index:9999; transition:1s; border-right:none; border-bottom:1px solid #eee}
+a.nobottom{ border-bottom:none}
+.nav-submenu-item span{ float:right}
+.nav-submenu-item a:hover {background:#eee; color:#000}
+.cap3menu {display:none; position:absolute; left:237px; margin-top:-32px; background:#fff; z-index:9999}
+.cap3menu a:hover{background:#ccc}
+.nav-submenu-item:hover .cap3menu{display:block}
+/* Mobile navigation */
+.nav-mobile { display:none; cursor:pointer; position:absolute; top:5px; left:0; background:url(../images/nav.png) no-repeat left center; width:100% !important; height:30px}
+.nav-click { position:absolute; top:0; right:0; display:none; height:40px; width:40px; background:(../images/navdrop.png) top center no-repeat; cursor:pointer }
+.nav-click i { display:block; height:40px; width:40px; background:url(../images/navdrop.png) top center no-repeat }
+.nav-click:hover { background-color:#ccc }
+.nav-rotate { -webkit-transform:rotate(180deg); -moz-transform:rotate(180deg); -ms-transform:rotate(180deg); -o-transform:rotate(180deg); transform:rotate(180deg)}
+
+@media only screen and (min-width: 240px) and (max-width: 768px) {
+.nav-item { float:none; border-right:0}	
+.nav-mobile { display:block}
+.nav {  padding:20px 0 0 0}
+.nav-list { display:none; margin-top:25px; background:#eee}
+.nav-item > a { background:#fff; color:#333; z-index:9999; text-shadow:none; padding:10px 0 10px 5px}
+.nav-item > a:hover{ background-image:none; padding-bottom:10px}
+.cap1:hover a.active{ background: #252525; border-top:0px solid #f00; padding-top:10px; color:#fff }
+.cap1:hover a.none{ background: #252525; border-top:0px solid #f00; padding-top:10px; color:#fff}
+.nav-click { display:block; z-index:9999; }
+.nav-mobile-open { border-radius:5px 5px 0 0; -webkit-border-radius:5px 5px 0 0; -moz-border-radius:5px 5px 0 0; z-index:9999 }
+.nav-submenu { display:block; position:static; width:100%; border:0; padding:0; border-radius:0; z-index:9999 }
+.nav-submenu-item a{ border:0; width:97% !important; padding:5px 0 5px 15px}
+.nav-submenu {box-shadow:none; border-radius:0}
+.nav-submenu-item .cap3menu{display:block; position: inherit; margin-top:1px; left:0}
+.nav-submenu-item .cap3menu a{margin-left:20px; background:url(../images/aclosed_1.gif) left no-repeat}
+}
+
+.csschitiet{ display:block; position:relative}
+.csschitiet img{max-width:100% !important; height:auto !important; margin-bottom:10px} .csschitiet a{color:#2b1bf9}
+.csschitiet h1,h2,h3,h4{ margin:10px 0; line-height:25px}
+.csschitiet ul{ margin-left:10px !important;}
+.csschitiet ul li{ background:url(../images/li-cap1.png) left top no-repeat; padding-left:20px !important; list-style:none !important;}
+.csschitiet ul li ul li{ background:url(../images/li-cap2.png) top center no-repeat; padding-left:20px !important; list-style:none !important;}
+.csschitiet table{ margin:15px auto; width:100% !important; max-width:100% !important; border:1px solid #ccc; border-collapse: collapse; 
+border-spacing: 0}
+.csschitiet table img{ display:block; margin:0 auto; text-align:center; vertical-align:middle}
+.csschitiet tr:first-child {background-color: #ccc;color:#000} .csschitiet td, th{padding: 4px}
+.csschitiet iframe{ width:600px; height:380px; max-width:100% !important; max-height:auto !important}
+.csschitiet figure { max-width: 600px; border: thin solid #eee; margin: 0 auto; text-align:center; margin:10px auto !important }
+.csschitiet figure img{ width:auto; max-width:100% !important; margin-bottom:0 !important}
+.csschitiet figure figcaption {  text-align: center;  font-size: 11px; text-indent: 0; padding:5px 0; background:#EEEEEE }
+.csschitiet a{ color:#0066FF; text-decoration:underline}
+
+.cimg{ width:42%; float:left; min-height:300px}
+.cinfo{ width:58%; float:right; min-height:300px}
+
+.menusub{ margin-right:20px; line-height:30px; border:1px solid #ccc; padding:3px 5px; border-radius:5px}
+.h2-title{height:20px; padding:10px; background:#eee; border-bottom:3px solid #f1c40f; white-space:nowrap; color:#333}
+
+.h2-title h2{ font-weight:normal; font-size:12px; margin:0; padding:0; margin-top:-3px}
+.h2-title a{ color:#333} .h2-title a:hover{ color:#f30}
+.breadcrumb{ float:left; white-space:nowrap}
+.breadcrumb strong{ margin:0 3px 0 6px}
+.info{ width:68%; float:left}
+.info a{ text-decoration:underline; color:#06f}
+.info a:hover{ text-decoration:none; color:#f30}
+.info .hinh{ width:224px; float:left; margin-right:20px}
+.info .hinh img{ border:1px solid #eee}
+img.anhchitiet{ border:1px solid #ccc; float:left; margin-right:10px; max-width:400px}
+h2.ten{ font-size:18px; color: #393c41; font-weight:normal; line-height:25px; text-align:left}
+.info .address{ display:block; float:left}
+.info .address p.add{ padding:3px 0}
+.info .address p.add img{ border:0; margin-bottom:-2px; margin-right:6px}
+hr.chitiet{ border:0; border-bottom:1px dashed #ccc; margin-bottom:5px; padding-bottom:5px}
+input.soluong{ border:1px solid #ccc; padding:6px 10px; border-radius:5px; width:50px; margin-right:5px}
+input.qtycart{ border:1px solid #ccc; padding:6px 10px; border-radius:5px; width:20px; margin-right:5px; color:#03f}
+input.upqty{ border:1px solid #ccc; padding:4px 6px; border-radius:5px; width:10px; margin-right:5px; cursor:pointer} input.upqty:hover{ background:#eee}
+input.downqty{ border:1px solid #ccc; padding:4px 6px; border-radius:5px; width:10px; margin-right:5px; cursor:pointer} input.downqty:hover{ background:#eee}
+
+
+
+input.themvaogiohang{border:0; padding:8px 10px; border-radius:5px; background:#282828; color:#fff; cursor:pointer} input.themvaogiohang:hover{ background:#0066FF}
+.giacty{ text-decoration:line-through}
+.giaban{ font-size:13px; font-weight:bold; color:#f30; margin-right:5px}
+.phantram{ background:#f1c40f; color:#fff; padding:2px 5px; border-radius:3px; margin-left:5px}
+.member{ float:right; width:25%; text-align:right; margin-top:10px}
+.member a{ text-decoration:underline; color:#06f}
+.member a:hover{ text-decoration:none; color:#f30}
+.member p.ngaydang{ font-style:italic; font-size:11px; color:#999}
+
+.canhphai{ float:right}
+ul#slider img{ max-width:100% !important}
+
+#rating_panel{ margin:0; display:inline-block }
+#rating_panel img{ border:0}
+#rating_title{ margin:5px 0 }
+#kqrating{ display:inline; margin-top:-2px}
+/* Form bình luận */
+form.binhluan{ margin:10px 0; border:1px solid #eee; padding:10px}
+form.binhluan textarea{ width:98%; border:1px solid #eaeaea; padding:1%; margin-bottom:10px}
+form.binhluan input[type="text"]{ padding:3px 5px; border:1px solid #eaeaea; background:#fff; color:#0066FF; margin-right:10px; width:30%}
+form.binhluan input[type="submit"]{ margin-top:5px; padding:3px 5px; background:#FF2F2F; color:#fff; border:1px solid #eee; border-radius:5px; cursor: pointer}
+form.binhluan input[type="submit"]:hover{ background:#333}
+
+form.replybinhluan{ margin:10px 0; border:1px solid #eee; padding:10px; margin-left:5%;}
+form.replybinhluan textarea{ width:98%; border:1px solid #eaeaea; padding:1%; margin-bottom:10px}
+form.replybinhluan input[type="text"]{ padding:3px 5px; border:1px solid #eaeaea; background:#fff; color:#0066FF; margin-right:10px; width:30%}
+form.replybinhluan input[type="submit"]{ margin-top:5px; padding:3px 5px; background:#FF2F2F; color:#fff; border:1px solid #eee; border-radius:5px; cursor: pointer}
+form.replybinhluan input[type="submit"]:hover{ background:#333}
+
+.linebinhluan{ border:1px solid #51b948; background: #e0ffdd; border-radius:5px; padding:5px; margin:5px 0; position:relative}
+.linebinhluan p.name{ background:url(../images/comment.png) left center no-repeat; padding-left:20px; color:#0066FF; font-weight:bold}
+.linebinhluan p.name span{ color:#999; font-size:11px; font-weight:normal}
+.linebinhluan .reply{ position:absolute; right:5px; top:5px; background:url(../images/reply.png) left center no-repeat; width:50px; cursor:pointer; text-indent:-9999px}
+.linebinhluan a{ color:#0066FF; text-decoration:underline}
+.linereply{ border:1px solid #ccc; background: #fff; padding:5px; margin:5px 0; position:relative; margin-left:5%}
+.linereply p.name{ background:url(../images/reply-icon.png) left center no-repeat; padding-left:20px; color: #0066FF; font-weight:normal}
+.linereply p.name span{ color:#999; font-size:11px; font-weight:normal}
+.linereply a{ color:#0066FF; text-decoration:underline}
+.boxReply{ display:none}
+.hide{ display:none}
+.numpage{ padding:3px 8px; border-radius:3px; background:#ccc; color:#fff; margin:0 5px; float:left; margin-bottom:10px}
+.numpageactive{ background: #f1c40f; color:#fff}
+ul.membermenu li{ float:left; margin-right:10px}
+ul.membermenu li a{ padding:5px 10px; background:#999; color:#fff; border:0; cursor:pointer; border-radius:3px}
+ul.membermenu li a img{ margin-bottom:-4px; border:0; margin-right:5px}
+ul.membermenu li a.addnew{ background:#ffa800}
+ul.membermenu li a:hover{ background:#51b948}
+.nav_up{padding:7px;background-color:white;border:1px solid #CCC;position:fixed;background:transparent url(../images/arrow_up.png) no-repeat top left;background-position:50% 50%;width:20px;height:20px;bottom:50px;opacity:0.7;right:30px;white-space:nowrap;cursor: pointer;border-radius:3px 3px 0 0;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70)}
+.nav_down{ padding:7px; background-color:white; border:1px solid #CCC; position:fixed; background:transparent url(../images/arrow_down.png) no-repeat top left; background-position:50% 50%; width:20px; height:20px; bottom:10px; opacity:0.7; right:30px; white-space:nowrap; cursor: pointer; border-radius:0 0 3px 3px; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70)}
+
+div.textThuoctinh{ display:inline-block; text-align:left; width:100px !important}
+select.cboNhieugia{ border:1px solid #ccc; padding:6px 10px; border-radius:5px; cursor:pointer}
+select.cboNhieugia option{ line-height:30px !important}
+
+input[type=checkbox]:not(old), input[type=radio   ]:not(old){ width   : 28px;  margin  : 0; padding : 0; opacity : 0}
+input[type=checkbox]:not(old) + label, input[type=radio   ]:not(old) + label{ display: inline-block; margin-left: -28px; padding-left : 24px; background   : url('../images/checks.png') no-repeat 0 0; line-height  : 24px; margin-right:10px}
+input[type=checkbox]:not(old):checked + label{ background-position : 0 -24px} input[type=radio]:not(old):checked + label{ background-position : 0 -48px}
+
+.control{ float:right; margin-top:2px; display:none}
+ul#tinnoibat li p{ clear:both; border-bottom:1px dashed #ccc; padding:5px 0; margin:5px 0; height:50px}
+ul#tinnoibat li p img{ width:40px; height:30px; float:left; margin-right:5px; margin-top:5px; border:0}
+
+ul#nhanxet li p{ clear:both; border-bottom:1px dashed #ccc; text-align:center; padding-bottom:20px}
+ul#nhanxet li p img{ max-width:80px; max-height:80px; margin-bottom:10px; border:0}
+ul#nhanxet li p strong{ color:#5e5e5e; font-size:15px} ul#nhanxet li p span{ font-style:italic; color:#999}
+/* Default Input */
+a.fblogin{ padding:8px 10px; background:#2b476f; border:3px solid #37588d; color:#fff; border-radius:5px; margin-bottom:10px}
+a.fblogin:hover{ background:#37588d; border:3px solid #2b476f}
+a.fblogin img{ border:0; margin-bottom:-6px; margin-right:5px}
+
+a.gglogin{ padding:8px 10px; background:#b33826; border:3px solid #e44b2c; color:#fff; border-radius:5px; margin-bottom:10px}
+a.gglogin:hover{ background:#e44b2c; border:3px solid #b33826}
+a.gglogin img{ border:0; margin-bottom:-6px; margin-right:20px}
+
+/* CSS hiệu ứng slider & scroller */
+ul.spbanchay{ display:inline-block; height:260px !important}
+ul.spbanchay li{ height:260px; float:left}
+ul.spbanchay li div{ margin:5px}
+ul.spbanchay li div p.img{ height:160px; text-align:center}
+ul.spbanchay li div p.img img{ width:auto; max-width:100%; max-height:160px}
+ul.spbanchay li div h3{ font-size:12px; text-align:center; height:45px; text-transform:capitalize}
+ul.spbanchay li div p.price{ height:25px; text-align:center}
+/* End CSS hiệu ứng slider & scroller */
+
+/* CSS đặt hàng */
+.cssdathang{ border:1px solid #eee; padding:10px; margin-top:10px}
+.cssdathang .rdata{ clear:both; width:100%; min-height:20px; margin:10px 0; padding:5px 0; border-bottom:1px dashed #eee}
+.cssdathang .rdata .c1{ float:left; width:10%; text-align:center} .cssdathang .rdata .c1 img{ max-width:100%; max-height:60px}
+.cssdathang .rdata .c2{ float:left; width:30%; padding:0 1%} .cssdathang .rdata .c2 strong{ color:#03f}
+.cssdathang .rdata .c3{ float:left; width:50%}
+.cssdathang .rdata .c3 .price{ width:25%; float:left} .cssdathang .rdata .c3 .qty{ width:32%; float:left} .cssdathang .rdata .c3 .amount{ width:38%; float:left; color:#f00}
+.cssdathang .rdata .c4{ float:left; width:4%}
+.cssdathang .nhanhang{ height:30px; padding:10px 0}
+.cssdathang .tongdonhang{ float:right; font-weight:bold}
+.cssdathang #phivanchuyen{ color:#666}
+.cssdathang #tongthanhtien{ font-weight:bold; color:#f00}
+.cssdathang .tongtien{ float:right; padding:8px 10px; background:#eee; border:1px solid #ccc; font-weight: bold; font-size:13px}
+.cssdathang .tongtien span{ color:#f00; font-size:15px}
+.cssdathang .btnDathang{background: #f1c40f; color:#fff; cursor:pointer; box-shadow:1px 1px 1px #ccc; border:1px solid #eee; width:120px; height:30px; padding:3px}
+.cssdathang .info{ width:48%; float:left} .cssdathang .info select{ border:1px solid #ccc; border-radius:5px; padding:3px 5px; margin-right:10px; min-width:140px}
+.cssdathang .thanhtien{ width:48%; float:right} .cssdathang .thanhtien p{ line-height:30px} .cssdathang .thanhtien span.title{ width:148px; display:block; float:left; text-align:right; margin-right:10px; color:#06f}
+table.dathang{ font-size:13px; width:100%}
+input.ninput{ padding:5px 10px; background:#fff; color:#666; width:320px; max-width:100% !important; margin:10px; border-radius:3px; border:1px solid #999}
+input.kinput{ padding:3px 10px; border:1px solid #ccc; background:#fff; color:#f00; max-width:200px; cursor:pointer}
+input.sinput{ padding:3px 10px; border:1px solid #ccc; background:#fff; color:#03f; width:50px; cursor:pointer; border-radius:5px}
+input.delete{ background:#eee; border:1px solid #ccc; border-radius:3px; padding:2px 5px; cursor:pointer}
+.tentheinput{ float:left; width:40%; height:25px; margin:5px 0; padding:5px 0; text-align:right}
+.theinput{ float:right; width:56%; text-align:left; border:1px solid #ccc; padding:6px 5px}
+/* End CSS đặt hàng */
+
+.lcontact{ width:50%; float:left; text-align:left} .lcontact iframe{ max-width:100%}
+.lcontact{ width:48%; float:left} .lcontact h2{ font-size:13px; font-weight:bold; text-transform:uppercase; margin:0 0 10px 0; color:#333}
+.lcontact form p{ margin:10px 0} .lcontact form p input[type="text"]{ padding:5px 10px; border:1px solid #ccc; border-radius:5px; width:90%}
+.lcontact form p{ margin:10px 0} .lcontact form p input[type="password"]{ padding:5px 10px; border:1px solid #ccc; border-radius:5px; width:90%}
+.lcontact form p textarea{ padding:5px 10px; border:1px solid #ccc; border-radius:5px; width:90%; height:120px}
+.lcontact form p input[type="submit"]{ padding:10px; border:1px solid #ccc; border-radius:3px; background:#393c41; color:#fff; width:120px; text-align:center}
+
+.select {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 95%;
+}
+
+.rcontact{ width:48%; float:right} .rcontact h2{ font-size:13px; font-weight:bold; text-transform:uppercase; margin:0 0 10px 0; color:#333}
+.rcontact form p{ margin:10px 0} .rcontact form p input[type="text"]{ padding:5px 10px; border:1px solid #ccc; border-radius:5px; width:90%}
+.rcontact form p{ margin:10px 0} .rcontact form p input[type="password"]{ padding:5px 10px; border:1px solid #ccc; border-radius:5px; width:90%}
+.rcontact form p textarea{ padding:5px 10px; border:1px solid #ccc; border-radius:5px; width:90%; height:120px}
+.rcontact form p input[type="submit"]{ padding:10px; border:1px solid #ccc; border-radius:3px; background:#393c41; color:#fff; width:120px; text-align:center}
+
+.form_line{ clear:both; display:block; line-height:40px}
+.form_line span.tit{ width:20%; float:left; display:block}
+.form_line input{ border:1px solid #ccc; padding:5px; width:50%; float:left}
+.form_line span.status{ width:23%; float:left; margin-left:2%}
+
+form.advance select{ padding:3px 5px; border:1px solid #ccc; border-radius:5px; margin-bottom:5px; width:94%}
+form.advance input[type="submit"]{ padding:5px 10px; border:0; border-radius:5px; background:#999; color:#fff; cursor:pointer} form.advance input[type="submit"]:hover{ background:#06f}

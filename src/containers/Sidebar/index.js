@@ -388,23 +388,22 @@ class Sidebar extends Component {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink to="/app/layouts/login">
+                  <a href="/login" target="_blank">
                     <i className="simple-icon-user-following" />{" "}
                     <IntlMessages id="menu.login" />
-                  </NavLink>
+                  </a>
                 </NavItem>
                 <NavItem>
-                <NavLink to="/app/layouts/register">
-                  {/* <a href="/register" target="_blank"> */}
+                  <a href="/register" target="_blank">
                     <i className="simple-icon-user-follow" />{" "}
                     <IntlMessages id="menu.register" />
-                    </NavLink>
+                  </a>
                 </NavItem>
                 <NavItem>
-                <NavLink to="/app/layouts/forgot-password">
+                  <a href="/forgot-password" target="_blank">
                     <i className="simple-icon-user-unfollow" />{" "}
                     <IntlMessages id="menu.forgot-password" />
-                </NavLink>
+                  </a>
                 </NavItem>
                 <NavItem>
                 <NavLink to="/app/layouts/error">
@@ -413,6 +412,12 @@ class Sidebar extends Component {
                  </NavLink>
                 </NavItem>
               </Nav>
+              <NavItem>
+                  <a href="/xshop" target="_blank">
+                    <i className="simple-icon-user-unfollow" />{" "}
+                    <IntlMessages id="menu.forgot-password" />
+                  </a>
+                </NavItem>
               <Nav
                 className={classnames({
                   "d-block": ((this.state.selectedParentMenu == "applications" && this.state.viewingParentMenu=="" )|| this.state.viewingParentMenu=="applications")

@@ -16,6 +16,7 @@ import register from 'Routes/layouts/register'
 import error from 'Routes/layouts/error'
 import forgotPassword from 'Routes/layouts/forgot-password'
 
+
 import MultipageHome from "Routes/landing-pages/multipage-home";
 import SinglepageHome from "Routes/landing-pages/singlepage-home";
 import About from "Routes/landing-pages/about";
@@ -33,7 +34,7 @@ import Prices from "Routes/landing-pages/prices";
 import Videos from "Routes/landing-pages/videos";
 import VideoDetail from "Routes/landing-pages/video-detail";
 import DocsDetails from "Routes/landing-pages/docs-details";
-
+import xshop from 'Routes/layouts/xshop/xshop';
 
 import 'Assets/css/vendor/bootstrap.min.css'
 import 'react-perfect-scrollbar/dist/css/styles.css';
@@ -96,6 +97,7 @@ class App extends Component {
 							<Route path={`/login`} component={login} />
 							<Route path={`/register`} component={register} />
 							<Route path={`/forgot-password`} component={forgotPassword} />
+							<Route path={`/xshop`} component={xshop} />
 							<Route path={`/error`} component={error} />
 							<Redirect to="/error" />
 						</Switch>

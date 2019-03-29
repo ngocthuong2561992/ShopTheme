@@ -1,0 +1,167 @@
+@charset "utf-8";
+/* CSS Document */
+/* CSS Mobile & Tablet */
+@media only screen and (min-width : 1025px) and (max-width : 1280px){ /* xam */ .resolution { background:#ccc} .csschitiet figure { max-width: 90%} }
+@media only screen and (min-width : 961px) and (max-width : 1024px){
+/* cam */ .resolution { background: #FF6600} 
+a.menutip{ display:none}
+.nav-item a{padding:10px 20px}
+}
+@media only screen and (min-width : 769px) and (max-width : 960px){ /* hồng */ .resolution { background: #FFCCFF} }
+@media only screen and (min-width : 641px) and (max-width : 768px){
+.resolution {background: #66CC00} /* xanh lá */
+.boxsp .frame .hinh{height:120px} .boxsp .frame .hinh img{ max-height:110px !important}
+h4.more{ width:45%; font-size:11px; margin-left:3px}
+.rfooter .info{ width:96%; margin:0 auto; padding:2%; text-align:left !important}
+.rfooter .social{ width:96%; margin:10px auto; padding:2%; text-align:left}
+.boxsp .frame h3{ height:60px}
+.info{ width:100%}
+.leftcol{ display:none}
+.centercol{ width:100%; margin:0 auto}
+
+.header .diachi{ display:none}
+.header .timkiem{  margin-left:2%}
+form.search input{width:70%}
+.nav-list{ width:100%}
+
+.rmenu .cart{ margin-top:-10px}
+.boxtin .frame{ height:120px}
+}
+
+@media only screen and (min-width : 481px) and (max-width : 640px){
+.resolution { background: #666600} /* nâu */
+.boxsp{ width:33.33%}
+.boxsp .frame .hinh{height:110px} .boxsp .frame .hinh img{ max-height:100px !important}
+h4.more{ width:45%; font-size:11px; margin-left:3px}
+.rfooter .info{ width:96%; margin:0 auto; padding:2%; text-align:left !important}
+.rfooter .social{ width:96%; margin:10px auto; padding:2%; text-align:left}
+.boxsp .frame h3{ height:60px}
+
+.info{ width:100%}
+.leftcol{ display:none}
+.centercol{ width:100%; margin:0 auto}
+.header {overflow:hidden; height:auto}
+.header .logo{ float:none; width:100%; text-align:center} 
+.header .diachi{ display:none}
+.header .timkiem{ width:56%; float:left; margin-left:10px}
+.header .cart{width:25%; margin-right:10px}
+form.search input{width:70%}
+.nav-list{ width:100%}
+.boxtin .frame{ height:120px}
+
+.rmenu .cart{ margin-top:-10px}
+}
+@media only screen and (min-width : 321px) and (max-width : 480px){
+.resolution { background: #f00} /* đỏ */
+strong, h2{font-size:13px}
+.boxsp{ width:50%}
+.rtop h1{font-size:8px}
+a.menutip{ display:none}
+.rmenu .cart{ margin-top:-10px}
+.boxsp .frame .hinh{height:140px} .boxsp .frame .hinh img{ max-height:140px !important; margin:0}
+h4.more{ width:45%; font-size:11px; margin-left:3px}
+.rfooter .info{ width:96%; margin:0 auto; padding:2%; text-align:left !important}
+.rfooter .social{ width:96%; margin:10px auto; padding:2%; text-align:left}
+.boxsp .frame h3{ height:60px}
+.info{ width:100%}
+.leftcol{ display:none}
+.centercol{ width:100%; margin:0 auto}
+
+.rslider .cleft{width:100%} .rslider .cright{display:none}
+
+.header {overflow:hidden; height:auto}
+.header .logo{ float:none; width:50%; text-align:center} 
+.header .diachi{ display:none}
+.header .timkiem{ width:88%; float:none; margin:0 auto}
+.header .cart{width:35%; position:absolute; right:5px; top:0}
+form.search input{width:70%}
+.nav-list{ width:100%}
+.boxtin .frame{ height:120px} .boxtin .frame span{ display:none}
+.anhchitiet{ width:40%}
+form.search{ float:none} form.search input{ width:70%}
+
+.anhchitiet{ width:40%}
+.boxtin span.des{ display:none}
+}
+
+@media only screen and (min-width : 240px) and (max-width : 320px){
+.resolution { background: #FF00FF} /* tím */
+body{ width:98%; margin:0 auto}
+.boxsp{ width:50%}
+.boxsp{ width:50%}
+.boxsp .frame .hinh{height:100px} .boxsp .frame .hinh img{ max-height:100px !important}
+h4.more{ width:45%; font-size:11px; margin-left:3px}
+.rfooter .info{ width:96%; margin:0 auto; padding:2%; text-align:left !important}
+.rfooter .social{ width:96%; margin:10px auto; padding:2%; text-align:left}
+.boxsp .frame h3{ height:60px}
+.info{ width:100%}
+.leftcol{ display:none}
+.centercol{ width:100%; margin:0 auto}
+
+
+
+.nav-list{ width:100%}
+.boxtin .frame{ height:120px} .boxtin .frame span{ display:none}
+.anhchitiet{ width:40%}
+form.search{ float:none} form.search input{ width:70%}
+.rtop h1{font-size:8px}
+
+}
+
+@media only screen and (max-width : 320px){
+.resolution { background: #66CCFF} /* xanh dương */
+body{ width:98%; margin:0 auto}
+.boxsp{ width:50%}
+.boxsp .frame .hinh{height:100px} .boxsp .frame .hinh img{ max-height:100px !important}
+h4.more{ width:45%; font-size:11px; margin-left:3px}
+.rfooter .info{ width:96%; margin:0 auto; padding:2%; text-align:left !important}
+.rfooter .social{ width:96%; margin:10px auto; padding:2%; text-align:left}
+.boxsp .frame h3{ height:60px}
+.info{ width:100%}
+.leftcol{ display:none}
+.centercol{ width:100%; margin:0 auto}
+.rtop h1{font-size:8px}
+.header {overflow:hidden; height:auto}
+.header .logo{ float:none; width:100%; text-align:center} 
+.header .diachi{ display:none}
+.header .timkiem{ width:88%; float:none; margin:0 auto}
+.header .cart{width:30%; position:absolute; right:5px; top:0}
+form.search input{width:70%}
+
+
+.nav-list{ width:100%}
+.boxtin .frame{ height:120px} .boxtin .frame span{ display:none} .boxtin .frame .hinh{ display:none}
+form.search{ float:none} form.search input{ width:60%}
+.anhchitiet{ width:100% !important; padding:0; margin:0}
+text-align:center; font-size:11px}
+
+.rmenu .cart{ margin-top:-10px}
+a.menunew, a.menuoff, a.menusale, a.menutip{ display:none}
+ul.textadv{ display:none}
+}
+@media only screen and (max-width : 240px){
+.resolution { background: #66CCFF} /* xanh dương */
+body{ width:98%; margin:0 auto}
+.boxsp{ width:100%}
+.boxsp .frame .hinh{height:100px} .boxsp .frame .hinh img{ max-height:100px !important}
+h4.more{ width:45%; font-size:11px; margin-left:3px}
+.rfooter .info{ width:96%; margin:0 auto; padding:2%; text-align:left !important}
+.rfooter .social{ width:96%; margin:10px auto; padding:2%; text-align:left}
+.boxsp .frame h3{ height:60px}
+.info{ width:100%}
+.leftcol{ display:none}
+.centercol{ width:100%; margin:0 auto}
+.header{ height:120px}
+.header .logo{ float:none; width:98%; margin:0 auto; text-align:center} .header .logo img{ border:0; max-width:100%}
+.header .diachi{ display:none}
+.header .timkiem{ float:none; width:98%; margin:0 auto; margin-top:-30px}
+.nav-list{ width:100%}
+.boxtin .frame{ height:120px} .boxtin .frame span{ display:none} .boxtin .frame .hinh{ display:none}
+form.search{ float:none} form.search input{ width:50%}
+.anhchitiet{ width:100% !important; padding:0; margin:0}
+.rtop{ height:80px} .rtop .hotline{ width:98%; margin:0 auto; float:none} .rtop .login{ width:98%; margin:5px auto; float:none; text-align:center; font-size:11px}
+
+.rmenu .cart{ margin-top:-10px}
+a.menunew, a.menuoff, a.menusale, a.menutip{ display:none}
+ul.textadv{ display:none}
+}

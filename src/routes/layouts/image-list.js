@@ -136,14 +136,14 @@ class ImageListLayout extends Component {
     }
 
     onSubmit() {
-      var{id,txtProductName,txtCategories,txtImage,txtSales,txtStock,txtDescription,exCustomRadio,exCustomRadio2}=this.state;
+      var{id,txtProductName,categories,txtImage,txtSales,txtStock,txtDescription,exCustomRadio,exCustomRadio2}=this.state;
       var data = {
         id: id,
         name: txtProductName,
         sales: txtSales,
         stock: txtStock,
         img : txtImage,
-        category: txtCategories,
+        category: categories,
         description: txtDescription,
         status: exCustomRadio,
         status: exCustomRadio2

@@ -188,6 +188,11 @@
         <option value="$PROJECT_DIR$/src/components/ApplicationMenu/index.js" />
         <option value="$PROJECT_DIR$/src/lang/locales/en_US.js" />
         <option value="$PROJECT_DIR$/src/assets/css/sass/_gogo.style.scss" />
+        <option value="$PROJECT_DIR$/src/assets/xshop/css/astyle.css" />
+        <option value="$PROJECT_DIR$/src/assets/xshop/css/mobilemenu.css" />
+        <option value="$PROJECT_DIR$/src/assets/xshop/css/responsive.css" />
+        <option value="$PROJECT_DIR$/src/assets/xshop/css/site-icons.css" />
+        <option value="$PROJECT_DIR$/src/assets/xshop/css/smoothproducts.css" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/routes/layouts/index.js" />
         <option value="$PROJECT_DIR$/src/routes/layouts/details.js" />
@@ -615,6 +620,41 @@
     <entry file="file://$PROJECT_DIR$/src/assets/css/sass/_mixins.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-538" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/xshop/css/astyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="5691" column="38" selection-start-line="5691" selection-start-column="22" selection-end-line="5691" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+     <entry file="file://$PROJECT_DIR$/src/assets/xshop/css/mobilemenu.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="5691" column="38" selection-start-line="5691" selection-start-column="22" selection-end-line="5691" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+     <entry file="file://$PROJECT_DIR$/src/assets/xshop/css/responsive.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="5691" column="38" selection-start-line="5691" selection-start-column="22" selection-end-line="5691" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+     <entry file="file://$PROJECT_DIR$/src/assets/xshop/css/site-icons.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="5691" column="38" selection-start-line="5691" selection-start-column="22" selection-end-line="5691" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/xshop/css/smoothproducts.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="5691" column="38" selection-start-line="5691" selection-start-column="22" selection-end-line="5691" selection-end-column="38" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/layouts/image-list.js">
