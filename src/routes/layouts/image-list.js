@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { injectIntl} from 'react-intl';
+import { injectIntl } from 'react-intl';
 import {
   Row,
   Card,
@@ -39,12 +39,19 @@ import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import FineUploaderTraditional from "fine-uploader-wrappers";
 import Gallery from "react-fine-uploader";
 import "react-fine-uploader/gallery/gallery.css";
+import { isArray } from 'lodash'
 function collect(props) {
   return { data: props.data };
 }
-const apiUrl ="http://localhost:3000/shop/getAllProduct";
-const apiAddProductUrl ="http://localhost:3000/shop/product/add";
+const apiUrl = "http://localhost:3000/shop/getAllProduct";
+const apiAddProductUrl = "http://localhost:3000/shop/product/add";
 import axios from 'axios';
+import mockData from '../../data/products'
+const MOCK_PRODUCTS = {
+  data: mockData,
+  totalItem: 20,
+  totalPage: 2
+}
 
 const uploader = new FineUploaderTraditional({
   options: {
@@ -62,270 +69,273 @@ const uploader = new FineUploaderTraditional({
 });
 
 class ImageListLayout extends Component {
-    constructor(props) {
-      super(props);
-      this.toggleDisplayOptions = this.toggleDisplayOptions.bind(this);
-      this.toggleSplit = this.toggleSplit.bind(this);
-      this.dataListRender = this.dataListRender.bind(this);
-      this.toggleModal = this.toggleModal.bind(this);
-      this.onSubmit = this.onSubmit.bind(this);
-      this.getIndex = this.getIndex.bind(this);
-      this.onContextMenuClick = this.onContextMenuClick.bind(this);
+  constructor(props) {
+    super(props);
+    this.toggleDisplayOptions = this.toggleDisplayOptions.bind(this);
+    this.toggleSplit = this.toggleSplit.bind(this);
+    this.dataListRender = this.dataListRender.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.getIndex = this.getIndex.bind(this);
+    this.onContextMenuClick = this.onContextMenuClick.bind(this);
 
 
-      this.state = {
-        displayMode: "imagelist",
-        pageSizes: [8, 12, 24],
-        selectedPageSize: 8,
-        categories:  [
-          {label:'Cakes',value:'Cakes',key:0},
-          {label:'Cupcakes',value:'Cupcakes',key:1},
-          {label:'Desserts',value:'Desserts',key:2},
-        ],
-        orderOptions:[
-          {column: "title",label: "Product Name"},
-          {column: "category",label: "Category"},
-          {column: "status",label: "Status"}
-        ],
-        selectedOrderOption:  {column: "title",label: "Product Name"},
-        dropdownSplitOpen: false,
-        modalOpen: false,
-        currentPage: 1,
-        totalItemCount: 0,
-        totalPage: 1,
-        search: "",
-        selectedItems: [],
-        lastChecked: null,
-        displayOptionsIsOpen: false,
-        isLoading:false,
-        id : 0,
-		    txtProductName : '',
-        txtCategories : 'Cakes',
-        txtSales : '' ,
-        txtStock : '' ,
-        txtImage : '',
-		    txtDescription : '' ,
-        exCustomRadio : '',
-      };
-    }
-    componentWillMount() {
-      this.props.bindShortcut(["ctrl+a", "command+a"], () =>
-        this.handleChangeSelectAll(false)
-      );
-      this.props.bindShortcut(["ctrl+d", "command+d"], () => {
-        this.setState({
-          selectedItems: []
-        });
-        return false;
-      });
-    }
-
-    toggleModal() {
+    this.state = {
+      displayMode: "imagelist",
+      pageSizes: [8, 12, 24],
+      selectedPageSize: 8,
+      categories: [
+        { label: 'Cakes', value: 'Cakes', key: 0 },
+        { label: 'Cupcakes', value: 'Cupcakes', key: 1 },
+        { label: 'Desserts', value: 'Desserts', key: 2 },
+      ],
+      orderOptions: [
+        { column: "title", label: "Product Name" },
+        { column: "category", label: "Category" },
+        { column: "status", label: "Status" }
+      ],
+      selectedOrderOption: { column: "title", label: "Product Name" },
+      dropdownSplitOpen: false,
+      modalOpen: false,
+      currentPage: 1,
+      totalItemCount: 0,
+      totalPage: 1,
+      search: "",
+      selectedItems: [],
+      lastChecked: null,
+      displayOptionsIsOpen: false,
+      isLoading: false,
+      id: 0,
+      txtProductName: '',
+      txtCategories: 'Cakes',
+      txtSales: '',
+      txtStock: '',
+      txtImage: '',
+      txtDescription: '',
+      exCustomRadio: '',
+      items: []
+    };
+  }
+  componentWillMount() {
+    this.props.bindShortcut(["ctrl+a", "command+a"], () =>
+      this.handleChangeSelectAll(false)
+    );
+    this.props.bindShortcut(["ctrl+d", "command+d"], () => {
       this.setState({
-        modalOpen: !this.state.modalOpen
-      });
-    }
-
-    onChange = event=> {
-      var target=event.target;
-      var name=target.name;
-      var value=target.type ==='checkbox' ?  target.checked : target.value;
-      this.setState({
-           [name]:value
-      });
-    }
-
-    onSubmit() {
-      var{id,txtProductName,categories,txtImage,txtSales,txtStock,txtDescription,exCustomRadio,exCustomRadio2}=this.state;
-      var data = {
-        id: id,
-        name: txtProductName,
-        sales: txtSales,
-        stock: txtStock,
-        img : txtImage,
-        category: categories,
-        description: txtDescription,
-        status: exCustomRadio,
-        status: exCustomRadio2
-       }
-      if(id){
-       
-      }else{
-        axios.post(apiAddProductUrl,JSON.stringify(data) ).then(function(){
-          () => this.dataListRender()
-        }).catch(function(){
-          this.message.error("Đã có lỗi");
-          () => this.dataListRender()
-        });
-      }
-
-    }
-
-    toggleDisplayOptions() {
-      this.setState({ displayOptionsIsOpen: !this.state.displayOptionsIsOpen });
-    }
-    toggleSplit() {
-      this.setState(prevState => ({
-        dropdownSplitOpen: !prevState.dropdownSplitOpen
-      }));
-    }
-    changeOrderBy(column) {
-      this.setState(
-        {
-          selectedOrderOption: this.state.orderOptions.find(
-            x => x.column === column
-          )
-        },
-        () => this.dataListRender()
-      );
-    }
-    changePageSize(size) {
-      this.setState(
-        {
-          selectedPageSize: size,
-          currentPage: 1
-        },
-        () => this.dataListRender()
-      );
-    }
-    changeDisplayMode(mode) {
-      this.setState({
-        displayMode: mode
+        selectedItems: []
       });
       return false;
+    });
+  }
+
+  toggleModal() {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    });
+  }
+
+  onChange = event => {
+    var target = event.target;
+    var name = target.name;
+    var value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value
+    }, () => console.log(this.state));
+  }
+
+  onSubmit() {
+    var { id, txtProductName, category, txtImage, txtSales, txtStock, txtDescription, exCustomRadio, exCustomRadio2 } = this.state;
+    var data = {
+      id,
+      name: txtProductName,
+      sales: txtSales,
+      stock: txtStock,
+      img: txtImage,
+      category,
+      description: txtDescription,
+      status: exCustomRadio,
+      status: exCustomRadio2
     }
-    onChangePage(page) {
+    if (id) {
+
+    } else {
+      console.log(data, 'data')
+      axios.post(apiAddProductUrl, JSON.stringify(data)).then(function () {
+        () => this.dataListRender()
+      }).catch(function () {
+        this.message.error("Đã có lỗi");
+        () => this.dataListRender()
+      });
+    }
+
+  }
+
+  toggleDisplayOptions() {
+    this.setState({ displayOptionsIsOpen: !this.state.displayOptionsIsOpen });
+  }
+  toggleSplit() {
+    this.setState(prevState => ({
+      dropdownSplitOpen: !prevState.dropdownSplitOpen
+    }));
+  }
+  changeOrderBy(column) {
+    this.setState(
+      {
+        selectedOrderOption: this.state.orderOptions.find(
+          x => x.column === column
+        )
+      },
+      () => this.dataListRender()
+    );
+  }
+  changePageSize(size) {
+    this.setState(
+      {
+        selectedPageSize: size,
+        currentPage: 1
+      },
+      () => this.dataListRender()
+    );
+  }
+  changeDisplayMode(mode) {
+    this.setState({
+      displayMode: mode
+    });
+    return false;
+  }
+  onChangePage(page) {
+    this.setState(
+      {
+        currentPage: page
+      },
+      () => this.dataListRender()
+    );
+  }
+
+  handleKeyPress(e) {
+    if (e.key === "Enter") {
       this.setState(
         {
-          currentPage: page
+          search: e.target.value.toLowerCase()
         },
         () => this.dataListRender()
       );
     }
+  }
 
-    handleKeyPress(e) {
-      if (e.key === "Enter") {
-        this.setState(
-          {
-            search: e.target.value.toLowerCase()
-          },
-          () => this.dataListRender()
-        );
-      }
+  handleCheckChange(event, id) {
+    if (
+      event.target.tagName == "A" ||
+      (event.target.parentElement &&
+        event.target.parentElement.tagName == "A")
+    ) {
+      return true;
+    }
+    if (this.state.lastChecked == null) {
+      this.setState({
+        lastChecked: id
+      });
     }
 
-    handleCheckChange(event, id) {
-      if (
-        event.target.tagName == "A" ||
-        (event.target.parentElement &&
-          event.target.parentElement.tagName == "A")
-      ) {
-        return true;
-      }
-      if (this.state.lastChecked == null) {
-        this.setState({
-          lastChecked: id
-        });
-      }
+    let selectedItems = this.state.selectedItems;
+    if (selectedItems.includes(id)) {
+      selectedItems = selectedItems.filter(x => x !== id);
+    } else {
+      selectedItems.push(id);
+    }
+    this.setState({
+      selectedItems
+    });
 
-      let selectedItems = this.state.selectedItems;
-      if (selectedItems.includes(id)) {
-        selectedItems = selectedItems.filter(x => x !== id);
-      } else {
-        selectedItems.push(id);
-      }
+    if (event.shiftKey) {
+      var items = this.state.items;
+      var start = this.getIndex(id, items, "id");
+      var end = this.getIndex(this.state.lastChecked, items, "id");
+      items = items.slice(Math.min(start, end), Math.max(start, end) + 1);
+      selectedItems.push(
+        ...items.map(item => {
+          return item.id;
+        })
+      );
+      selectedItems = Array.from(new Set(selectedItems));
       this.setState({
         selectedItems
       });
+    }
+    document.activeElement.blur();
+  }
 
-      if (event.shiftKey) {
-        var items = this.state.items;
-        var start = this.getIndex(id, items, "id");
-        var end = this.getIndex(this.state.lastChecked, items, "id");
-        items = items.slice(Math.min(start, end), Math.max(start, end) + 1);
-        selectedItems.push(
-          ...items.map(item => {
-            return item.id;
-          })
-        );
-        selectedItems = Array.from(new Set(selectedItems));
+  getIndex(value, arr, prop) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i][prop] === value) {
+        return i;
+      }
+    }
+    return -1;
+  }
+  handleChangeSelectAll(isToggle) {
+    if (this.state.selectedItems.length >= this.state.items.length) {
+      if (isToggle) {
         this.setState({
-          selectedItems
+          selectedItems: []
         });
       }
-      document.activeElement.blur();
+    } else {
+      this.setState({
+        selectedItems: this.state.items.map(x => x.id)
+      });
+    }
+    document.activeElement.blur();
+    return false;
+  }
+  componentDidMount() {
+    this.dataListRender();
+  }
+
+  dataListRender = async () => {
+    const { selectedPageSize, currentPage, selectedOrderOption, search } = this.state;
+    const url = `${apiUrl}?pageSize=${selectedPageSize}&currentPage=${currentPage}&orderBy=${selectedOrderOption.column}&search=${search}`
+    let data = await axios.get(url)
+    // CHEAT MOCK DATA
+    if (!data || !isArray(data.data)) {
+      data = MOCK_PRODUCTS
+    }
+    console.log(data, 'data')
+    this.setState({
+      totalPage: data.totalPage,
+      items: data.data,
+      selectedItems: [],
+      totalItemCount: data.totalItem,
+      isLoading: false
+    });
+  }
+
+  onContextMenuClick = (e, data, target) => {
+    console.log("onContextMenuClick - selected items", this.state.selectedItems)
+    console.log("onContextMenuClick - action : ", data.action);
+  };
+
+  onContextMenu = (e, data) => {
+    const clickedProductId = data.data;
+    if (!this.state.selectedItems.includes(clickedProductId)) {
+      this.setState({
+        selectedItems: [clickedProductId]
+      });
     }
 
-    getIndex(value, arr, prop) {
-      for (var i = 0; i < arr.length; i++) {
-        if (arr[i][prop] === value) {
-          return i;
-        }
-      }
-      return -1;
-    }
-    handleChangeSelectAll(isToggle) {
-      if (this.state.selectedItems.length >= this.state.items.length) {
-        if (isToggle) {
-          this.setState({
-            selectedItems: []
-          });
-        }
-      } else {
-        this.setState({
-          selectedItems: this.state.items.map(x => x.id)
-        });
-      }
-      document.activeElement.blur();
-      return false;
-    }
-    componentDidMount() {
-      this.dataListRender();
-    }
+    return true;
+  };
 
-    dataListRender() {
-
-      const {selectedPageSize,currentPage,selectedOrderOption,search} = this.state;
-      axios.get(`${apiUrl}?pageSize=${selectedPageSize}&currentPage=${currentPage}&orderBy=${selectedOrderOption.column}&search=${search}`)
-      .then(res => {
-        return res.data        
-      }).then(data=>{
-
-        this.setState({
-          totalPage: data.totalPage,
-          items: data.data,
-          selectedItems:[],
-          totalItemCount : data.totalItem,
-          isLoading:true
-        });
-      })
-    }
-
-    onContextMenuClick = (e, data, target) => {
-      console.log("onContextMenuClick - selected items",this.state.selectedItems)
-      console.log("onContextMenuClick - action : ", data.action);
-    };
-
-    onContextMenu = (e, data) => {
-      const clickedProductId = data.data;
-      if (!this.state.selectedItems.includes(clickedProductId)) {
-        this.setState({
-          selectedItems :[clickedProductId]
-        });
-      }
-
-      return true;
-    };
-
-    render() {
-      const startIndex= (this.state.currentPage-1)*this.state.selectedPageSize
-      const endIndex= (this.state.currentPage)*this.state.selectedPageSize
-      const {messages} = this.props.intl;
-      var  {txtProductName,txtCategories,txtImage,txtSales,txtStock,txtDescription,exCustomRadio,exCustomRadio2}=this.state;
-      return (
-        !this.state.isLoading?
-          <div className="loading"></div>
-       :
+  render() {
+    const startIndex = (this.state.currentPage - 1) * this.state.selectedPageSize
+    const endIndex = (this.state.currentPage) * this.state.selectedPageSize
+    const { messages } = this.props.intl;
+    var { txtProductName, txtCategories, txtImage, txtSales, txtStock, txtDescription, exCustomRadio, exCustomRadio2 } = this.state;
+    console.log(this.state.items, 'items')
+    return (
+      this.state.isLoading ?
+        <div className="loading"></div>
+        :
         <Fragment>
           <div className="disable-text-selection">
             <Row>
@@ -359,7 +369,7 @@ class ImageListLayout extends Component {
                         <Label>
                           <IntlMessages id="layouts.product-name" />
                         </Label>
-                        <Input type="text"  value={txtProductName}  name="txtProductName" onChange={this.onChange}/>
+                        <Input type="text" value={txtProductName} name="txtProductName" onChange={this.onChange} />
                         <Label className="mt-4">
                           <IntlMessages id="layouts.category" />
                         </Label>
@@ -367,36 +377,36 @@ class ImageListLayout extends Component {
                           components={{ Input: CustomSelectInput }}
                           className="react-select"
                           classNamePrefix="react-select"
-                          value={txtCategories}
+                          value={this.state.category || this.state.categories[0]}
                           name="txtCategories"
                           options={this.state.categories}
-                          onChange={this.onChange}
+                          onChange={(val) => { console.log(val, 'value'); this.onChange({ target: { name: 'category', value: val } }) }}
                         />
                         <Label className="mt-4">
                           <IntlMessages id="form-components.fine-uploader" />
                         </Label>
                         <Gallery
-                         animationsDisabled={true}
-                         uploader={uploader}
-                         deleteButton-children={<span>Delete</span>}
-                         fileInput-children={<span />}
+                          animationsDisabled={true}
+                          uploader={uploader}
+                          deleteButton-children={<span>Delete</span>}
+                          fileInput-children={<span />}
                         >
-                       <span className="react-fine-uploader-gallery-dropzone-content">
-                       <IntlMessages id="form-components.drop-files-here" />
-                       </span>
-                       </Gallery>
-                       <Label>
+                          <span className="react-fine-uploader-gallery-dropzone-content">
+                            <IntlMessages id="form-components.drop-files-here" />
+                          </span>
+                        </Gallery>
+                        <Label>
                           <IntlMessages id="layouts.amount" />
                         </Label>
-                        <Input type="text"  value={txtStock}  name="txtStock" onChange={this.onChange}/>
+                        <Input type="text" value={txtStock} name="txtStock" onChange={this.onChange} />
                         <Label>
                           <IntlMessages id="layouts.price" />
                         </Label>
-                        <Input type="text"  value={txtSales}  name="txtSales" onChange={this.onChange}/>
+                        <Input type="text" value={txtSales} name="txtSales" onChange={this.onChange} />
                         <Label className="mt-4">
-                        <IntlMessages id="layouts.description" />
+                          <IntlMessages id="layouts.description" />
                         </Label>
-                        <Input type="textarea"  value={txtDescription}  name="txtDescription" onChange={this.onChange}/>
+                        <Input type="textarea" value={txtDescription} name="txtDescription" onChange={this.onChange} />
                         <Label className="mt-4">
                           <IntlMessages id="layouts.status" />
                         </Label>
@@ -406,7 +416,7 @@ class ImageListLayout extends Component {
                           name="customRadio"
                           label="ON HOLD"
                           value={exCustomRadio}
-                          onChange={this.onChange} 
+                          onChange={this.onChange}
                         />
                         <CustomInput
                           type="radio"
@@ -414,7 +424,7 @@ class ImageListLayout extends Component {
                           name="customRadio"
                           label="PROCESSED"
                           value={exCustomRadio2}
-                          onChange={this.onChange} 
+                          onChange={this.onChange}
                         />
                       </ModalBody>
                       <ModalFooter>
@@ -452,11 +462,11 @@ class ImageListLayout extends Component {
                           <span
                             className={`custom-control-label ${
                               this.state.selectedItems.length > 0 &&
-                              this.state.selectedItems.length <
+                                this.state.selectedItems.length <
                                 this.state.items.length
                                 ? "indeterminate"
                                 : ""
-                            }`}
+                              }`}
                           />
                         </Label>
                       </div>
@@ -493,45 +503,45 @@ class ImageListLayout extends Component {
                     className="d-md-block"
                     id="displayOptions"
                   >
-                   <span className="mr-3 mb-2 d-inline-block float-md-left">
-                    <a
-                      className={`mr-2 view-icon ${
-                        this.state.displayMode === "list" ? "active" : ""
-                        }`}
-                      onClick={() => this.changeDisplayMode("list")}
-                    >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 19">
-                    <path className="view-icon-svg" d="M17.5,3H.5a.5.5,0,0,1,0-1h17a.5.5,0,0,1,0,1Z" />
-                    <path className="view-icon-svg" d="M17.5,10H.5a.5.5,0,0,1,0-1h17a.5.5,0,0,1,0,1Z" />
-                    <path className="view-icon-svg" d="M17.5,17H.5a.5.5,0,0,1,0-1h17a.5.5,0,0,1,0,1Z" /></svg>
-                    </a>
-                    <a
-                      className={`mr-2 view-icon ${
-                        this.state.displayMode === "thumblist" ? "active" : ""
-                        }`}
-                      onClick={() => this.changeDisplayMode("thumblist")}
-                    >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 19">
-                    <path className="view-icon-svg" d="M17.5,3H6.5a.5.5,0,0,1,0-1h11a.5.5,0,0,1,0,1Z" />
-                    <path className="view-icon-svg" d="M3,2V3H1V2H3m.12-1H.88A.87.87,0,0,0,0,1.88V3.12A.87.87,0,0,0,.88,4H3.12A.87.87,0,0,0,4,3.12V1.88A.87.87,0,0,0,3.12,1Z" />
-                    <path className="view-icon-svg" d="M3,9v1H1V9H3m.12-1H.88A.87.87,0,0,0,0,8.88v1.24A.87.87,0,0,0,.88,11H3.12A.87.87,0,0,0,4,10.12V8.88A.87.87,0,0,0,3.12,8Z" />
-                    <path className="view-icon-svg" d="M3,16v1H1V16H3m.12-1H.88a.87.87,0,0,0-.88.88v1.24A.87.87,0,0,0,.88,18H3.12A.87.87,0,0,0,4,17.12V15.88A.87.87,0,0,0,3.12,15Z" />
-                    <path className="view-icon-svg" d="M17.5,10H6.5a.5.5,0,0,1,0-1h11a.5.5,0,0,1,0,1Z" />
-                    <path className="view-icon-svg" d="M17.5,17H6.5a.5.5,0,0,1,0-1h11a.5.5,0,0,1,0,1Z" /></svg>
-                    </a>
-                    <a
-                      className={`mr-2 view-icon ${
-                        this.state.displayMode === "imagelist" ? "active" : ""
-                        }`}
-                      onClick={() => this.changeDisplayMode("imagelist")}
-                    >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 19">
-                    <path className="view-icon-svg" d="M7,2V8H1V2H7m.12-1H.88A.87.87,0,0,0,0,1.88V8.12A.87.87,0,0,0,.88,9H7.12A.87.87,0,0,0,8,8.12V1.88A.87.87,0,0,0,7.12,1Z" />
-                    <path className="view-icon-svg" d="M17,2V8H11V2h6m.12-1H10.88a.87.87,0,0,0-.88.88V8.12a.87.87,0,0,0,.88.88h6.24A.87.87,0,0,0,18,8.12V1.88A.87.87,0,0,0,17.12,1Z" />
-                    <path className="view-icon-svg" d="M7,12v6H1V12H7m.12-1H.88a.87.87,0,0,0-.88.88v6.24A.87.87,0,0,0,.88,19H7.12A.87.87,0,0,0,8,18.12V11.88A.87.87,0,0,0,7.12,11Z" />
-                    <path className="view-icon-svg" d="M17,12v6H11V12h6m.12-1H10.88a.87.87,0,0,0-.88.88v6.24a.87.87,0,0,0,.88.88h6.24a.87.87,0,0,0,.88-.88V11.88a.87.87,0,0,0-.88-.88Z" /></svg>
-                    </a>
-                  </span>
+                    <span className="mr-3 mb-2 d-inline-block float-md-left">
+                      <a
+                        className={`mr-2 view-icon ${
+                          this.state.displayMode === "list" ? "active" : ""
+                          }`}
+                        onClick={() => this.changeDisplayMode("list")}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 19">
+                          <path className="view-icon-svg" d="M17.5,3H.5a.5.5,0,0,1,0-1h17a.5.5,0,0,1,0,1Z" />
+                          <path className="view-icon-svg" d="M17.5,10H.5a.5.5,0,0,1,0-1h17a.5.5,0,0,1,0,1Z" />
+                          <path className="view-icon-svg" d="M17.5,17H.5a.5.5,0,0,1,0-1h17a.5.5,0,0,1,0,1Z" /></svg>
+                      </a>
+                      <a
+                        className={`mr-2 view-icon ${
+                          this.state.displayMode === "thumblist" ? "active" : ""
+                          }`}
+                        onClick={() => this.changeDisplayMode("thumblist")}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 19">
+                          <path className="view-icon-svg" d="M17.5,3H6.5a.5.5,0,0,1,0-1h11a.5.5,0,0,1,0,1Z" />
+                          <path className="view-icon-svg" d="M3,2V3H1V2H3m.12-1H.88A.87.87,0,0,0,0,1.88V3.12A.87.87,0,0,0,.88,4H3.12A.87.87,0,0,0,4,3.12V1.88A.87.87,0,0,0,3.12,1Z" />
+                          <path className="view-icon-svg" d="M3,9v1H1V9H3m.12-1H.88A.87.87,0,0,0,0,8.88v1.24A.87.87,0,0,0,.88,11H3.12A.87.87,0,0,0,4,10.12V8.88A.87.87,0,0,0,3.12,8Z" />
+                          <path className="view-icon-svg" d="M3,16v1H1V16H3m.12-1H.88a.87.87,0,0,0-.88.88v1.24A.87.87,0,0,0,.88,18H3.12A.87.87,0,0,0,4,17.12V15.88A.87.87,0,0,0,3.12,15Z" />
+                          <path className="view-icon-svg" d="M17.5,10H6.5a.5.5,0,0,1,0-1h11a.5.5,0,0,1,0,1Z" />
+                          <path className="view-icon-svg" d="M17.5,17H6.5a.5.5,0,0,1,0-1h11a.5.5,0,0,1,0,1Z" /></svg>
+                      </a>
+                      <a
+                        className={`mr-2 view-icon ${
+                          this.state.displayMode === "imagelist" ? "active" : ""
+                          }`}
+                        onClick={() => this.changeDisplayMode("imagelist")}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 19">
+                          <path className="view-icon-svg" d="M7,2V8H1V2H7m.12-1H.88A.87.87,0,0,0,0,1.88V8.12A.87.87,0,0,0,.88,9H7.12A.87.87,0,0,0,8,8.12V1.88A.87.87,0,0,0,7.12,1Z" />
+                          <path className="view-icon-svg" d="M17,2V8H11V2h6m.12-1H10.88a.87.87,0,0,0-.88.88V8.12a.87.87,0,0,0,.88.88h6.24A.87.87,0,0,0,18,8.12V1.88A.87.87,0,0,0,17.12,1Z" />
+                          <path className="view-icon-svg" d="M7,12v6H1V12H7m.12-1H.88a.87.87,0,0,0-.88.88v6.24A.87.87,0,0,0,.88,19H7.12A.87.87,0,0,0,8,18.12V11.88A.87.87,0,0,0,7.12,11Z" />
+                          <path className="view-icon-svg" d="M17,12v6H11V12h6m.12-1H10.88a.87.87,0,0,0-.88.88v6.24a.87.87,0,0,0,.88.88h6.24a.87.87,0,0,0,.88-.88V11.88a.87.87,0,0,0-.88-.88Z" /></svg>
+                      </a>
+                    </span>
 
                     <div className="d-block d-md-inline-block">
                       <UncontrolledDropdown className="mr-1 float-md-left btn-group mb-1">
@@ -565,7 +575,7 @@ class ImageListLayout extends Component {
                     <div className="float-md-right">
                       <span className="text-muted text-small mr-1">{`${startIndex}-${endIndex} of ${
                         this.state.totalItemCount
-                      } `}</span>
+                        } `}</span>
                       <UncontrolledDropdown className="d-inline-block">
                         <DropdownToggle caret color="outline-dark" size="xs">
                           {this.state.selectedPageSize}
@@ -590,7 +600,7 @@ class ImageListLayout extends Component {
               </Colxx>
             </Row>
             <Row>
-              {this.state.items.map(product => {
+              {this.state.items && this.state.items.map(product => {
                 if (this.state.displayMode === "imagelist") {
                   return (
                     <Colxx
@@ -644,7 +654,7 @@ class ImageListLayout extends Component {
                                   checked={this.state.selectedItems.includes(
                                     product.id
                                   )}
-                                  onChange={() => {}}
+                                  onChange={() => { }}
                                   label=""
                                 />
                               </Colxx>
@@ -718,7 +728,7 @@ class ImageListLayout extends Component {
                                 checked={this.state.selectedItems.includes(
                                   product.id
                                 )}
-                                onChange={() => {}}
+                                onChange={() => { }}
                                 label=""
                               />
                             </div>
@@ -775,7 +785,7 @@ class ImageListLayout extends Component {
                                 checked={this.state.selectedItems.includes(
                                   product.id
                                 )}
-                                onChange={() => {}}
+                                onChange={() => { }}
                                 label=""
                               />
                             </div>
@@ -818,7 +828,7 @@ class ImageListLayout extends Component {
             </MenuItem>
           </ContextMenu>
         </Fragment>
-      );
-    }
+    );
   }
-  export default injectIntl(mouseTrap(ImageListLayout))
+}
+export default injectIntl(mouseTrap(ImageListLayout))
